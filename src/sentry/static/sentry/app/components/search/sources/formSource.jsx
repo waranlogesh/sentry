@@ -4,6 +4,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import createReactClass from 'create-react-class';
 
+import {loadSearchMap} from 'app/actionCreators/formSearch';
 import {createFuzzySearch} from 'app/utils/createFuzzySearch';
 import FormSearchStore from 'app/stores/formSearchStore';
 import replaceRouterParams from 'app/utils/replaceRouterParams';
@@ -40,6 +41,11 @@ class FormSource extends React.Component {
     };
 
     this.createSearch(props.searchMap);
+  }
+
+  componentDidMount() {
+    // Loads form fields
+    loadSearchMap();
   }
 
   componentWillReceiveProps(nextProps) {
